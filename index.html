@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Simon</title>
     <link rel="stylesheet" type="text/css" media="screen" href="simon.css" />
 </head>
 
@@ -11,22 +11,25 @@
         <div style = "color: white; width: 100%; text-align: center;">
             <div style = "font-size: 30px; margin-bottom: 10px;">SIMON</div>
             Highest Streak: <span id = "highStreak">0</span>
-            <br>
-            Current Streak: <span id = "streak">0</span>
-            <br>
-            <input type = "button" value = "Start" id = "start">
+                        <br>
+                        Current Streak: <span id = "streak">0</span>
+                        <br>
         </div>
-        <div style = "background-color: gray; border-radius: 35%; border: 2px solid black; width: 700px;">
+        <div class = 'shadow-black' style = "background-color: gray; border-radius: 35%; border: 2px solid black; width: 700px;">
             <div class = "container jc-center">
-                <div id = "red" class = "button fb-third br-tl br-tr" style = "background-color: red; height: 200px; border: 2px solid black;"></div>
+                <div id = "red" class = "button fb-third br-tl br-tr shadow-red" style = "background-color: red; height: 200px; border: 2px solid black;"></div>
             </div>
             <div class = "container jc-center">   
-                <div id = "yellow" class = "button fb-third br-tl br-bl" style = "background-color: yellow; height: 200px; border: 2px solid black;"></div>
-                <div id = "center" class = "fb-third" style = "background-color: black; height: 200px; border: 2px solid black;"></div> 
-                <div id = "green" class = "button fb-third br-tr br-br" style = "background-color: green; height: 200px; border: 2px solid black;"></div>
+                <div id = "yellow" class = "button fb-third br-tl br-bl shadow-yellow" style = "background-color: yellow; height: 200px; border: 2px solid black;"></div>
+                <div id = "center" class = "fb-third" style = "background-color: black; height: 200px; border: 2px solid black;">
+                    <div style = "color: white; width: 100%; text-align: center; margin-top: 20px;">
+                        <input type = "button" value = "Start" id = "start" style = "height: 154px; width: 154px; font-size: 40px;">
+                    </div>
+                </div>
+                <div id = "green" class = "button fb-third br-tr br-br shadow-green" style = "background-color: green; height: 200px; border: 2px solid black;"></div>
             </div>
             <div class = "container jc-center">    
-                <div id = "blue" class = "button fb-third br-bl br-br" style = "background-color: blue; height: 200px; border: 2px solid black;"></div>
+                <div id = "blue" class = "button fb-third br-bl br-br shadow-blue" style = "background-color: blue; height: 200px; border: 2px solid black;"></div>
             </div>
         <div>
             <script src="simon.js"></script>

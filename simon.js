@@ -11,19 +11,27 @@ let whileStop = 0;
 let sequenceLoc = 0;
 function startGame()
 {
+    if(on = true)
+    {
     addListeners()
-    console.log("yes")
-
-    //while(streak == true && whileStop == 0)
-    //{   
-        whileStop = 1;
-        console.log('enter while')
-        on = false;
-        lastPress = "";
-        addToSequence()
-        playSequence()
-
-}
+    document.getElementById('start').value = 'Restart'
+    on = false;
+    lastPress = "";
+    for(let i = 0; i <= sequence.length; i++)
+        {
+            sequence.pop();
+        }
+        if(currentStreak > highestStreak)
+        {
+            document.getElementById('highStreak').innerText = currentStreak;
+        }
+    currentStreak = 0;
+    document.getElementById('streak').innerText = currentStreak;
+    document.getElementById('center').classList.remove('wrong')
+    addToSequence()
+    playSequence()
+    }
+}    
 
 function addListeners()
 {
@@ -35,8 +43,6 @@ function addListeners()
         lastPress = e.target.id
         console.log(lastPress)
 
-        //for(let i = 0; i < sequence.length; i++)
-            //{
                 if(lastPress === sequence[sequenceLoc])
                 {
                     //on = false;
@@ -63,7 +69,7 @@ function addListeners()
                 }
                 else
                 {
-                    document.getElementById('center').classList.add('correct');
+                    document.getElementById('center').classList.add('wrong');
                     if(currentStreak > highestStreak)
                     {
                         document.getElementById('highStreak').innerText = currentStreak;
@@ -72,12 +78,7 @@ function addListeners()
                     on = false;
                     streak = false;
                     sequenceLoc = 0;
-                    //break
                 }
-            //}
-        //addToSequence()
-        //playSequence()
-        //return press;
         }
     })
 }
@@ -116,7 +117,6 @@ function addToSequence()
             let start = window.setTimeout(()=> {
                 document.getElementById(sequence[i]).classList.add('glow');
                 }, i * 1500 + 1500);
-            //document.getElementById(sequence[i -1]).classList.add('glow');
                 let end = window.setTimeout(()=> {
                 document.getElementById(sequence[i]).classList.remove('glow');
                 }, i * 1500 + 2000);
