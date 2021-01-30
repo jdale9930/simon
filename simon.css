@@ -1,0 +1,38 @@
+.background {
+    background: linear-gradient(1deg,  #696e6d, #000504 , #696e6d);
+    }
+        .container {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .fb-third{
+            flex-basis: calc((100% / 3) - 4px);
+        }
+
+        .column{
+            flex-flow: column wrap;
+        }
+        .jc-center{
+            justify-content: center;
+        }
+
+        .br-tl{
+            border-top-left-radius: 25%;
+        }
+
+        .br-tr{
+            border-top-right-radius: 25%;
+        }
+
+        .br-bl{
+            border-bottom-left-radius: 25%;
+        }
+
+        .br-br{
+            border-bottom-right-radius: 25%;
+        }
+
+        .glow{
+            box-shadow: white 0px 0px 20px 20px;
+        }
