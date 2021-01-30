@@ -1,5 +1,6 @@
 document.getElementById("start").addEventListener('click' , startGame)
-let on = false;
+addListeners()
+let on = true;
 let streak = true;
 let sequence = [];
 let lastPress = ""
@@ -9,15 +10,17 @@ let glowInterval = 1;
 let idleStop = 0;
 let whileStop = 0;
 let sequenceLoc = 0;
+let seqCount = 0;
 function startGame()
 {
-    if(on = true)
+    if(on == true)
     {
-    addListeners()
+    //addListeners()
     document.getElementById('start').value = 'Restart'
     on = false;
     lastPress = "";
-    for(let i = 0; i <= sequence.length; i++)
+    seqCount = sequence.length
+    for(let i = 0; i <= seqCount; i++)
         {
             sequence.pop();
         }
@@ -38,19 +41,17 @@ function addListeners()
     let button = document.getElementsByClassName("button")
     for(i = 0; i < button.length; i++)
     button[i].addEventListener('click' , e => {
-        if(on == true)
+        if(on == true && sequence.length > 0)
         {
         lastPress = e.target.id
         console.log(lastPress)
 
                 if(lastPress === sequence[sequenceLoc])
                 {
-                    //on = false;
                     document.getElementById('center').classList.add('correct');
                     let end = window.setTimeout(() =>{
                         document.getElementById('center').classList.remove('correct');
                     }, 100)
-                    //on = true;
                     whileStop = 0;
                     if(sequenceLoc + 1 < sequence.length)
                     {
@@ -67,7 +68,7 @@ function addListeners()
                         playSequence();
                     }
                 }
-                else
+                else if(lastPress)
                 {
                     document.getElementById('center').classList.add('wrong');
                     if(currentStreak > highestStreak)
@@ -75,7 +76,7 @@ function addListeners()
                         document.getElementById('highStreak').innerText = currentStreak;
                     }
                     currentStreak = 0;
-                    on = false;
+                    on = true;
                     streak = false;
                     sequenceLoc = 0;
                 }
@@ -112,13 +113,15 @@ function addToSequence()
     function playSequence()
     {
         on = false;
+        console.log(on)
         for(let i = 0; i < sequence.length; i++)
         {
+            let bs = document.getElementById(sequence[i]).style.boxShadow
             let start = window.setTimeout(()=> {
-                document.getElementById(sequence[i]).classList.add('glow');
+                document.getElementById(sequence[i]).style.boxShadow = 'white 0px 0px 20px 20px', bs;
                 }, i * 1500 + 1500);
                 let end = window.setTimeout(()=> {
-                document.getElementById(sequence[i]).classList.remove('glow');
+                document.getElementById(sequence[i]).style.boxShadow = bs;
                 }, i * 1500 + 2000);
         }
         let onTimer = window.setTimeout(() =>{

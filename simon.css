@@ -1,7 +1,7 @@
-.background {
+.background{
     background: linear-gradient(1deg,  #696e6d, #000504 , #696e6d);
     }
-        .container {
+        .container{
             display: flex;
             flex-flow: row wrap;
         }
@@ -50,22 +50,35 @@
         }
 
         .shadow-black{
-            box-shadow: inset black 0px 0px 30px 30px
+            box-shadow: inset gray 0px 0px 30px 30px,
+                      black  5px 5px 5px 5px;
         }
 
         .shadow-red{
             box-shadow: inset rgb(160, 10, 10) 0px 0px 30px 30px,
-                        black  5px 5px 5px 5px
+                        black  5px 5px 5px 5px;
         }
         .shadow-yellow{
             box-shadow: inset rgb(172, 172, 4) 0px 0px 30px 30px,
-                        black  5px 5px 5px 5px
+                        black  5px 5px 5px 5px;
         }
         .shadow-green{
             box-shadow: inset rgb(3, 99, 3) 0px 0px 30px 30px,
-                        black  5px 5px 5px 5px
+                        black  5px 5px 5px 5px;
         }
         .shadow-blue{
             box-shadow: inset rgb(0, 0, 177) 0px 0px 30px 30px,
-                        black  5px 5px 5px 5px
+                        black  5px 5px 5px 5px;
+        }
+        .hRed:hover{
+            background-color:rgb(253, 82, 82) !important;
+        }
+        .hYellow:hover{
+            background-color:rgb(255, 255, 96) !important;
+        }
+        .hGreen:hover{
+            background-color:rgb(58, 161, 58) !important;
+        }
+        .hBlue:hover{
+            background-color:rgb(73, 73, 255) !important;
         }
