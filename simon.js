@@ -7,27 +7,24 @@ let lastPress = ""
 let currentStreak = 0;
 let highestStreak = 0;
 let glowInterval = 1;
-let idleStop = 0;
-let whileStop = 0;
 let sequenceLoc = 0;
 let seqCount = 0;
 function startGame()
 {
     if(on == true)
     {
-    //addListeners()
     document.getElementById('start').value = 'Restart'
     on = false;
     lastPress = "";
     seqCount = sequence.length
     for(let i = 0; i <= seqCount; i++)
-        {
-            sequence.pop();
-        }
-        if(currentStreak > highestStreak)
-        {
-            document.getElementById('highStreak').innerText = currentStreak;
-        }
+    {
+        sequence.pop();
+    }
+    if(currentStreak > highestStreak)
+    {           
+        document.getElementById('highStreak').innerText = currentStreak;
+    }
     currentStreak = 0;
     document.getElementById('streak').innerText = currentStreak;
     document.getElementById('center').classList.remove('wrong')
@@ -45,41 +42,41 @@ function addListeners()
         {
         lastPress = e.target.id
         console.log(lastPress)
-
-                if(lastPress === sequence[sequenceLoc])
+            if(lastPress === sequence[sequenceLoc])
+            {
+                document.getElementById('center').classList.add('correct');
+                let end = window.setTimeout(() =>{
+                document.getElementById('center').classList.remove('correct');
+                }, 100)
+                    
+                whileStop = 0;
+                if(sequenceLoc + 1 < sequence.length)
                 {
-                    document.getElementById('center').classList.add('correct');
-                    let end = window.setTimeout(() =>{
-                        document.getElementById('center').classList.remove('correct');
-                    }, 100)
-                    whileStop = 0;
-                    if(sequenceLoc + 1 < sequence.length)
-                    {
-                        console.log('entered if')
-                        sequenceLoc = sequenceLoc + 1;
-                    }
-                    else
-                    {
-                        console.log('entered else')
-                        sequenceLoc = 0;
-                        currentStreak = currentStreak + 1
-                        document.getElementById('streak').innerText = currentStreak;
-                        addToSequence();
-                        playSequence();
-                    }
+                    console.log('entered if')
+                    sequenceLoc = sequenceLoc + 1;
                 }
-                else if(lastPress)
+                else
                 {
-                    document.getElementById('center').classList.add('wrong');
-                    if(currentStreak > highestStreak)
-                    {
-                        document.getElementById('highStreak').innerText = currentStreak;
-                    }
-                    currentStreak = 0;
-                    on = true;
-                    streak = false;
+                    console.log('entered else')
                     sequenceLoc = 0;
+                    currentStreak = currentStreak + 1
+                    document.getElementById('streak').innerText = currentStreak;
+                    addToSequence();
+                    playSequence();
                 }
+            }                
+            else if(lastPress)
+            {
+                document.getElementById('center').classList.add('wrong');
+                if(currentStreak > highestStreak)
+                {
+                    document.getElementById('highStreak').innerText = currentStreak;
+                }
+                currentStreak = 0;
+                on = true;
+                streak = false;
+                sequenceLoc = 0;
+            }
         }
     })
 }
